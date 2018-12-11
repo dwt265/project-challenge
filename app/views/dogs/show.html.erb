@@ -11,9 +11,5 @@
     <br>
     <%= link_to "Delete #{@dog.name}'s Profile", dog_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "col-md-auto" %>
   <%end%>
-
-  <% if logged_in? == true && current_user.id.to_s != @dog.owner%>
-    <%= link_to "Like #{@dog.name}'s Profile", edit_dog_path, :class => "col-md-auto" %>
-  <%end%>
   
 </section>

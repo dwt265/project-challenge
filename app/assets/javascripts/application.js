@@ -18,12 +18,12 @@
 console.log('Welcome!');
 
 
-jQuery.noConflict()
-
-jQuery(document).ready(placeAds);
+$(document).on('turbolinks:load', function() {
+    placeAds();
+});
 
 function placeAds() {
-    var dogs = jQuery('#main .dog-item');
+    var dogs = $('#main .dog-item');
     var adHtml = '<a href="https://www.barkbox.com" target="_blank">' + 
         '<article class="col-sm-auto dog-item">' +
         '<img class="ad-photo" src="/images/ad.jpg">' + 
@@ -31,9 +31,9 @@ function placeAds() {
         '</a>';
 
     var i = 1;
-    jQuery.each(dogs, function(i, dogItem) {
+    $.each(dogs, function(i, dogItem) {
         if(i % 2 === 1) {
-            jQuery(dogItem).parent().after(adHtml);
+            $(dogItem).parent().after(adHtml);
         }
         i++;
     });
