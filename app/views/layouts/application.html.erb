@@ -16,6 +16,7 @@
         <div class="actions">
           <% if current_user %>
             <%= link_to 'Add your dog', new_dog_path %>
+            <br>
             <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
           <% else %>  
             <%#No reason to show these buttons on sign in and password reset.%>
