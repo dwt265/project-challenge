@@ -1,11 +1,24 @@
 <%= simple_form_for @dog do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :image, as: :file %>
+  <div class="col-md-auto">
+    <%= f.input :name%>
+  </div>
+  <div class="col-md-auto">
+    <%= f.label 'Owner' %>
+    <%= f.collection_select(:owner, User.all, :id, :email, {:label => "Owner", :selected => @dog.owner, :include_blank => true} )%>
+  </div>
+  <div class="col-md-auto">
+    <%= f.input :description, as: :text%>
+  </div>
+  <div class="col-md-auto">
+    <%= f.input :image, as: :file%>
+  </div>
+  
 
   <% if @dog.images.any? %>
-    <%= image_tag @dog.images.first %>
+    <%= image_tag @dog.images.first, :class => "col-md-auto"  %>
   <% end %>
 
-  <%= f.button :submit %>
+  <div class="update_dog">
+    <%= f.button :submit, :class => "col-md-auto"  %>
+  </div>
 <% end %>
