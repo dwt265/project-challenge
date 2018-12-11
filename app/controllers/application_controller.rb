@@ -10,9 +10,11 @@ class ApplicationController < ActionController::Base
   def require_login
     unless current_user
       puts action_name
+      puts controller_name
       if request.path != new_user_session_path && 
          request.path != new_user_registration_path &&
-         action_name.to_s != "create"
+         action_name.to_s != "create" &&
+         controller_name.to_s != "passwords" 
          redirect_to new_user_session_path
       end
     end
